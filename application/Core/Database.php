@@ -14,7 +14,7 @@ class Database {
     private $shutdownUpload;
 
     public function __construct(){   
-        $this->cloudStoragePath = 'https://storage.googleapis.com/cityofdavid-file-storage/public/cityofdavid.sqlite';
+        $this->cloudStoragePath = 'https://storage.googleapis.com/cityofdavid-file-storage/cityofdavid.sqlite';
         $this->cloudTempPath = '/tmp/cityofdavid.sqlite';
         if($this->isLocalEnv()){
             $this->pdo = $this->getLocalSqliteConnection();
