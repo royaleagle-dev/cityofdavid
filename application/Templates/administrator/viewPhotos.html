@@ -1,0 +1,58 @@
+{% extends "administrator/base.html" %}
+
+{% block title %}
+View Photos
+{% endblock %}
+
+{% block CSS %}
+
+{% endblock %}
+
+{% block content %}
+<div class="panel-heading">
+	<h3 class="panel-title"><a href="javascript:void(0);" class="toggle-sidebar"><span class="fa fa-angle-double-left" data-toggle="offcanvas" title="Maximize Panel"></span></a>Pictures</h3>
+</div>
+<div class="panel-body">
+	<div class="content-row">
+		<div class = "row">
+			<a href = "{% url uploadPhoto %}" class = "btn btn-info">Upload Pictures</a>
+		</div>
+		<div class = "row">
+			@php foreach($photos as $photo): @endphp
+			<div class = "col-md-3" id = "photo-{{$photo->id}}">
+				<div class = "col-md-12">
+					<img src = "{{$photo->photo_path}}" style = "max-width:100%;height:auto;">
+					<div class = "p-1" style = "background-color:#DA4453">
+						<button class = "btn btn-danger btn-block" onclick = "confirmDeletePhoto('{{$photo->id}}')">
+							<span class = "glyphicon glyphicon-trash"></span>
+						</button>
+					</div>
+				</div>
+			</div>
+			@php endforeach; @endphp
+		</div>
+		<hr>
+	</div>
+</div>
+{% endblock %}
+
+{% block JS %}
+<script>
+	function confirmDeletePhoto(photo_id){
+		confirmDelete = confirm("Do you really want to delete this picture?");
+		if(confirmDelete){
+			url = "{% url deletePhoto %}"
+			$.post(url, {'id':photo_id}, function(response){
+				const data = JSON.parse(response);
+				console.log(data);
+				if(data.status == 'success'){
+					toastr.success(data.message);
+					$(`#photo-${photo_id}`).hide('slow');
+				}else{
+					toastr.error(data.message);
+				}
+			})
+		}
+	}
+</script>
+{% endblock %}

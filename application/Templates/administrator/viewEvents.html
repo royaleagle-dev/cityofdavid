@@ -1,0 +1,145 @@
+{% extends "administrator/base.html" %}
+
+{% block title %}
+Events
+{% endblock %}
+
+{% block CSS %}
+<style>
+	.edit-backdrop{
+		background-color: rgba(0,0,0,0.8);
+		width:100%;
+		position:fixed;
+		top:0;
+		left:0;
+		z-index:1000;
+		height:100%;
+	}
+
+	.edit-backdrop .panel{
+		width:30%;
+		margin: 0 auto;
+		padding: 3%;
+	}
+
+	.panel textarea{
+		height:150px;
+	}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="panel-heading">
+	<h3 class="panel-title"><a href="javascript:void(0);" class="toggle-sidebar"><span class="fa fa-angle-double-left" data-toggle="offcanvas" title="Maximize Panel"></span></a>Events</h3>
+</div>
+<div class="panel-body">
+	<div class="content-row">
+		<div class = "row">
+			<a class = "btn btn-info" href = "{% url addEvent %}">Add Event</a>
+		</div>
+
+        <hr>
+		<div class = "row">
+			@php foreach($events as $event): @endphp
+			<div class = "col-md-4" id = "event-{{$event->id}}">
+				<h6 align = "center" style = "margin-bottom:3px;">{{$event->title}}</h6>
+				<img src = "{{$event->photo_path}}" style = "max-width:100%;height:auto;">
+				<span id = "info-{{$event->id}}" data-event = "{{$event->id}}" data-title = "{{$event->title}}" data-date = "{{$event->eventDate}}" data-description="{{$event->description}}">
+				</span>
+				<div align = "right" style = "background-color:lightgrey;padding:10px;">
+					<button class = "btn btn-primary" onclick = "openEditPanel('info-{{$event->id}}')">
+                    	<span class = "glyphicon glyphicon-edit"></span>
+                	</button>
+                	<button class = "btn btn-danger" onclick = "confirmDeleteEvent('{{$event->id}}')">
+	                    <span class = "glyphicon glyphicon-trash"></span>
+                	</button>
+				</div>
+			</div>
+			@php endforeach; @endphp
+		</div>
+		<hr>
+	</div>
+</div>
+
+<div class = "edit-backdrop" style = "display:none;">
+	<div class = "panel">
+		<div align = "right" style = "margin-bottom:5px;">
+			<span class = "glyphicon glyphicon-remove" style = "color:black;" id = "cancelPanel"></span>
+		</div>
+		<form id = "updateEventForm">
+			<label>Title</label>
+			<input class = "form-control" id = "editEventTitle">
+			<hr>
+			<label>Event Date</label>
+			<input class = "form-control" id = "editEventDate" type = "date">
+			<hr>
+			<label>Event Description</label>
+			<textarea class = "form-control" id = "editEventDescription"></textarea>
+			<hr>
+			<button type = "submit" class = "btn-danger btn btn-block" id = "updateEventBtn">Update Event</button>
+		</form>		
+	</div>
+</div>
+{% endblock %}
+
+{% block JS %}
+<script>
+	
+	function confirmDeleteEvent(event_id){
+		confirmDelete = confirm("Do you really want to delete this event?");
+		if(confirmDelete){
+			url = "{% url deleteEvent %}"
+			$.post(url, {'id':event_id}, function(response){
+				const data = JSON.parse(response);
+				console.log(data);
+				if(data.status == 'success'){
+					toastr.success(data.message);
+					$(`#event-${event_id}`).hide('slow');
+				}else{
+					toastr.error(data.message);
+				}
+			})
+		}
+	}
+
+	
+
+	function openEditPanel(element_id){
+		const element = $(`#${element_id}`);
+		const title = element.data('title');
+		const eventDate = element.data('date');
+		const description = element.data('description');
+		const id = element.data('event');
+		console.log(id);
+
+		$("#editEventTitle").val(title);
+		$("#editEventDescription").val(description);
+		$("#editEventDate").val(eventDate);
+		$(".edit-backdrop").show('show');
+
+		$("#cancelPanel").click(function(){
+			$(".edit-backdrop").hide('slow');
+		})
+
+		$("#updateEventForm").submit(function(e){
+			e.preventDefault();
+			const url = "{% url updateEvent %}"
+			$.post(url, {
+				'id':id,
+				'title': $("#editEventTitle").val(),
+				'description': $("#editEventDescription").val(),
+				'date': $("#editEventDate").val(),
+			}, function(response){
+				const data = JSON.parse(response);
+				if(data.status == 'success'){
+					toastr.success(data.message);
+					setTimeout(function(){window.location.reload()}, 3000)
+				}else{
+					toastr.error(data.message);
+				}
+			})
+		})
+	}
+
+</script>
+{% endblock %}

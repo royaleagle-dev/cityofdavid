@@ -1,0 +1,44 @@
+{% extends "administrator/base.html" %}
+
+{% block otherCSS %}
+<style>
+.grid{
+	margin-top:30px;
+}
+textarea{
+	height: 200px;
+	width: 100%;
+}
+input{
+	width: 100%;
+}
+
+label{
+	font-weight: 600;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class = "grid">
+	<div class = "col-4">
+		<div>
+		</div>
+	</div>
+	<div class = "col-4" style = "padding:2%;">
+		<div>
+			<h5>Website Visitors (unique)</h5>
+			<hr>
+			<h3>Today</h3>
+			<h1>{{$todayVisitors}}</h1>
+			<hr>
+			<h3>All Time</h3>
+			<h1>{{$allVisitors}}</h1>
+			<hr>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block otherJS %}
+{% endblock %}

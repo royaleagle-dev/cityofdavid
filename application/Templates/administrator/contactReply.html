@@ -1,0 +1,66 @@
+{% extends "administrator/base.html" %}
+
+{% block title %}
+Contact Messages
+{% endblock %}
+
+{% block CSS %}
+<style>
+    input, textarea{
+        margin-bottom:10px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="panel-heading">
+	<h3 class="panel-title"><a href="javascript:void(0);" class="toggle-sidebar"><span class="fa fa-angle-double-left" data-toggle="offcanvas" title="Maximize Panel"></span></a>Message</h3>
+</div>
+<div class="panel-body">
+	<div class="content-row">
+		<div class = "row">
+			<div class = "col p-2">
+                <div>
+                    <h4>{{$message->subject}}</h4>
+                    <button class = "btn btn-secondary" disabled>{{$message->date_sent}}</button>
+                </div>
+                <hr>
+                <p>{{$message->message}}</p>
+            </div>
+		</div>
+		<hr>
+        <div class = "row">
+            <div class = "col-md-2"></div>
+            <div class = "col-md-8">
+                <form id = "replyForm">
+                    <input id = "subject" type="text" name = "subject" value="Reply To:- {{$message->subject}}" class = "form-control" disabled>
+                    <textarea id = "message" class = "form-control" style = "height:200px;" name = "message"></textarea>
+                    <button type = "submit" class = "btn btn-info btn-block">Reply Message</button>
+                </form>
+            </div>
+        </div>
+	</div>
+</div>
+{% endblock %}
+
+{% block JS %}
+<script>
+    $("#replyForm").submit(function(e){
+        e.preventDefault();
+        const subject = $("#subject").val();
+        const message = $("#message").val();
+        const email = "{{$message->email}}";
+        const url = "{% url sendEmail %}";
+        const identifier = "{{$message->id}}";
+        
+        $.post(url, {'subject':subject, 'message':message, 'email':email, 'id':identifier}, function(response){
+            const data = JSON.parse(response);
+            if(data.status == 'success'){
+                toastr.success(data.message);
+            }else{
+                toastr.error(data.message);
+            }
+        })
+    })
+</script>
+{% endblock %}

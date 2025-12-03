@@ -1,0 +1,227 @@
+
+{% extends "base.html" %}
+
+{% block otherCSS %}
+{% endblock %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
+    <div class="hero-container">
+      <div id="heroCarousel" class="carousel slide carousel-fade" data-ride="carousel">
+
+        <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+
+        <div class="carousel-inner" role="listbox">
+
+          <!-- Slide 1 -->
+          <div class="carousel-item active" style="background: url({{URL_ROOT}}assets/img/img1.jpg);background-size:cover;">
+            <div class="carousel-container">
+              <div class="carousel-content">
+                <h2 class="animate__animated animate__fadeInDown">Welcome to <span class = "text-dark">City of David Mount of Zion Ministry.</span></h2>
+                <p class="animate__animated animate__fadeInUp">We're passionate about celebrating our Saviour together as a church, and with today's technology, we can do that online.</p>
+                <a href="" class="btn-get-started animate__animated animate__fadeInUp" style = "background-color:orange;">Join Us</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="carousel-item" style="background: url({{URL_ROOT}}assets/img/img2.jpg);background-size:cover;">
+            <div class="carousel-container">
+              <div class="carousel-content">
+                <h2 class="animate__animated fanimate__adeInDown">Need <span class = "text-info">Prayer?</span></h2>
+                <p class="animate__animated animate__fadeInUp">There are times when life is tough when we find ourselves questioning everything . Hope can feel far away in those times, but there is One who is ready to listen. No matter what you're going through</p>
+                <a href="" class="btn-get-started animate__animated animate__fadeInUp" style = "background-color:#15154a">Submit a Prayer Request</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="carousel-item" style="background: url({{URL_ROOT}}assets/img/img3.jpg);background-size:cover;">
+            <div class="carousel-container">
+              <div class="carousel-content">
+                <h2 class="animate__animated animate__fadeInDown">Spiritual <span class = "text-dark">Care</span></h2>
+                <p class="animate__animated animate__fadeInUp">Feeling overwhelmed or isolated? You could use some spiritual guidiance and care.</p>
+                <a href="tel://000" class="btn-get-started animate__animated animate__fadeInUp" style = "background-color:orange;">Call Our Prayer Line</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <a class="carousel-control-prev" href="#heroCarousel" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon icofont-rounded-left" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+
+        <a class="carousel-control-next" href="#heroCarousel" role="button" data-slide="next">
+          <span class="carousel-control-next-icon icofont-rounded-right" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+
+      </div>
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+    <!-- ======= Featured Section ======= -->
+    <section id="featured" class="featured">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="icon-box">
+              <i class="icofont-hand"></i>
+              <h3><a href="">Need Prayer?</a></h3>
+              <p>No matter what you're going through right now, we would love to pray with you</p>
+            </div>
+          </div>
+          <div class="col-lg-4 mt-4 mt-lg-0">
+            <div class="icon-box">
+              <i class="icofont-people"></i>
+              <h3><a href="">Worship</a></h3>
+              <p>In the presence of God there's fullness of joy. Moreover, where two or three are gathered, the Lord is right there.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 mt-4 mt-lg-0">
+            <div class="icon-box">
+              <i class="icofont-love"></i>
+              <h3><a href="">Love</a></h3>
+              <p>We preach love, and we're doing well to exercise it in our church, No matter your background, you're always welcome.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Featured Section -->
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-lg-6">
+            <img src="assets/img/about.jpg" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0 content">
+            <h3>Jesus Christ Loves You</h3>
+            <p class="font-italic">
+              "For God So loved the world that he gave his only begotten Son that whosoever believes in him shall no perish but live everlasting life"
+            </p>
+            <p>Here in our church, we believe that:</p>
+            <ul>
+              <li><i class="icofont-check-circled"></i>JESUS is the only way</li>
+              <li><i class="icofont-check-circled"></i>God has a plan for you</li>
+              <li><i class="icofont-check-circled"></i>Nobody is beyond salvation</li>
+            </ul>
+            <p>Jesus Christ loves you, and we also love you. Feel free to come in during our worship sessions and be ready to have God's blessings come down on your life</p>
+            <a href = "" class = "btn btn-block btn-info" style = "background-color:#15154a">Read More</a>
+
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
+
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services">
+      <div class="container">
+
+        <div class="section-title" data-aos="fade-up">
+          <h2></h2>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+            <div class="icon-box">
+              <div class="icon"><i class="bx bxl-dribbble"></i></div>
+              <h4><a href="">Donate</a></h4>
+              <p>Help us grow. There's nothing you give that is too much or too small for God.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
+            <div class="icon-box">
+              <div class="icon"><i class="icofont-people"></i></div>
+              <h4><a href="">Join Us</a></h4>
+              <p>Stream us online on our social media handles or come to our church in person</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-wrench"></i></div>
+              <h4><a href="">Work For God</a></h4>
+              <p>God rewards those who dilligently serve him. How can you help us expand the ministry?</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-church"></i></div>
+              <h4><a href="">Join Our Service</a></h4>
+              <p>Sunday Mornings At 8:00am _____________________________</p>
+            </div>
+          </div>
+
+          <!--
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-slideshow"></i></div>
+              <h4><a href="">Dele cardo</a></h4>
+              <p>Quis consequatur saepe eligendi voluptatem consequatur dolor consequuntur</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-arch"></i></div>
+              <h4><a href="">Divera don</a></h4>
+              <p>Modi nostrum vel laborum. Porro fugit error sit minus sapiente sit aspernatur</p>
+            </div>
+          </div>
+          -->
+
+        </div>
+
+      </div>
+    </section><!-- End Services Section -->
+
+
+    <!-- ======= Clients Section ======= -->
+    <!--
+    <section id="clients" class="clients">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Clients</h2>
+          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+        </div>
+
+        <div class="owl-carousel clients-carousel">
+          <img src="assets/img/clients/client-1.png" alt="">
+          <img src="assets/img/clients/client-2.png" alt="">
+          <img src="assets/img/clients/client-3.png" alt="">
+          <img src="assets/img/clients/client-4.png" alt="">
+          <img src="assets/img/clients/client-5.png" alt="">
+          <img src="assets/img/clients/client-6.png" alt="">
+          <img src="assets/img/clients/client-7.png" alt="">
+          <img src="assets/img/clients/client-8.png" alt="">
+        </div>
+
+      </div>
+    -->
+    </section><!-- End Clients Section -->
+
+  </main><!-- End #main -->
+  {% endblock %}
+
+  {% block otherJS %}
+  {% endblock %}
+
+  

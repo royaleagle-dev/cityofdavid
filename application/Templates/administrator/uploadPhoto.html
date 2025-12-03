@@ -1,0 +1,76 @@
+{% extends "administrator/base.html" %}
+
+{% block title %}
+Upload Pictures
+{% endblock %}
+
+{% block CSS %}
+<link href="{{URL_ROOT}}assets_old/vendor/plupload3/js/jquery.plupload.queue/css/jquery.plupload.queue.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="panel-heading">
+	<h3 class="panel-title"><a href="javascript:void(0);" class="toggle-sidebar"><span class="fa fa-angle-double-left" data-toggle="offcanvas" title="Maximize Panel"></span></a>Pictures</h3>
+</div>
+<div class="panel-body">
+	<div class="content-row">
+		<div class = "row">
+			<div class = "col">
+				<form method="post" action="">	
+					<div id="uploader">
+						<p>Your browser doesn't have Flash, Silverlight or HTML5 support.</p>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class = "row">
+			<a href = "{% url adminViewPhotos %}" class = "btn btn-primary" style = "float:right;">View Pictures</a>
+		</div>
+		<hr>
+	</div>
+</div>
+
+
+
+<div class = "mt5pc w50" style = "margin:0 auto;">
+</div>
+
+
+{% endblock %}
+
+{% block JS %}
+<script src = "{{URL_ROOT}}assets_old/vendor/plupload3/js/plupload.full.min.js"></script>
+<script src = "{{URL_ROOT}}assets_old/vendor/plupload3/js/jquery.plupload.queue/jquery.plupload.queue.js"></script>
+<script>
+$(document).ready(function() {
+	// Setup html5 version
+	$("#uploader").pluploadQueue({
+		// General settings
+		runtimes : 'html5,flash,silverlight,html4',
+		
+		// Fake server response here 
+		// url : '../upload.php',
+		url: "{% url photoUploader %}",
+		
+		max_file_size : '2mb',
+		chunks : {
+			size: '1mb',
+			send_chunk_number: false // set this to true, to send chunk and total chunk numbers instead of offset and total bytes
+		},
+		rename : true,
+		dragdrop: true,
+		filters : [
+			{title : "Image files", extensions : "jpg,gif,png,jpeg"},
+			{title : "Zip files", extensions : "zip"}
+		],
+
+		// Resize images on clientside if we can
+		resize : {width : 320, height : 240, quality : 90},
+
+		flash_swf_url : 'http://rawgithub.com/moxiecode/moxie/master/bin/flash/Moxie.cdn.swf',
+		silverlight_xap_url : 'http://rawgithub.com/moxiecode/moxie/master/bin/silverlight/Moxie.cdn.xap'
+	});
+});
+
+</script>
+{% endblock %}

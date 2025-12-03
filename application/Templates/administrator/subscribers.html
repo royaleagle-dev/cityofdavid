@@ -1,0 +1,66 @@
+{% extends "administrator/base.html" %}
+
+{% block title %}
+Subscribers
+{% endblock %}
+
+{% block CSS %}
+
+{% endblock %}
+
+{% block content %}
+<div class="panel-heading">
+	<h3 class="panel-title"><a href="javascript:void(0);" class="toggle-sidebar"><span class="fa fa-angle-double-left" data-toggle="offcanvas" title="Maximize Panel"></span></a>Subscribers</h3>
+</div>
+<div class="panel-body">
+	<div class="content-row">
+		<div class = "row">
+			<div class = "col">
+                <table class = "table-striped table">
+                    <tr>
+                        <th>Mark</th>
+                        <th>Email</th>
+                        <th>Date Added</th>
+                        <th>Actions</th>
+                    </tr>
+                    @php $count = 0; @endphp
+                    @php foreach($subscribers as $subscriber): @endphp
+                    @php $count += 1; @endphp
+                    <tr id = "subscriber-{{$count}}">
+                        <td><input type = "checkbox" name = "mark"></td>
+                        <td>{{$subscriber->email}}</td>
+                        <td>{{$subscriber->date_added}}</td>
+                        <td><button class = "btn btn-sm btn-danger" onclick = "confirmDeleteSubscriber('{{$subscriber->email}}', '{{$count}}')">Delete</button></td>
+                    </tr>
+                    @php endforeach; @endphp
+                </table>
+            </div>
+		</div>
+		<hr>
+	</div>
+</div>
+{% endblock %}
+
+{% block JS %}
+<script>
+	function confirmDeleteSubscriber(subscriber_email, count){
+        const deleteSubscriber = confirm("Do you really want to delete this subscriber.");
+        if(deleteSubscriber){
+            subscriberDelete(subscriber_email, count);
+        }
+    }
+
+    function subscriberDelete(subscriber_email, count){
+        const url = "{% url deleteSubscriber %}"
+        $.post(url, {'email':subscriber_email}, function(response){
+            const data = JSON.parse(response);
+            if(data.status == 'success'){
+                toastr.success(data.message);
+                $(`#subscriber-${count}`).hide('slow');
+            }else{
+                toastr.error(data.message);
+            }
+        })
+    }
+</script>
+{% endblock %}

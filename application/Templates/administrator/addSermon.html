@@ -1,0 +1,49 @@
+{% extends "administrator/base.html" %}
+
+{% block otherCSS %}
+<style>
+.grid{
+	margin-top:30px;
+}
+textarea{
+	height: 200px;
+	width: 100%;
+}
+input{
+	width: 100%;
+}
+
+label{
+	font-weight: 600;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class = "grid">
+	<div class = "col-4">
+		<div>
+		</div>
+	</div>
+	<div class = "col-4" style = "padding:2%;">
+		<div>
+			<h4>Add Sermon</h4>
+			<hr>
+			<form method = "POST" action = "" enctype = "multipart/form-data">
+				<input type = "text" name = "title" class = "inputElement" placeholder = "Sermon Title">
+				<input type = "date" name = "sermonDate" class = "inputElement" placeholder = "Sermon Date">
+				<fieldset>
+					<label>Attach an audio file (< 5mb)</label>
+					<input type = "file" name = "sermonAudio" class = "inputElement">
+				</fieldset><br>
+				<textarea name = "description" placeholder = "Sermon Description"></textarea>
+				<input type = "submit" name = "submit" value = "Add Sermon" class = "bg-black inputElement">
+			</form>
+			
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block otherJS %}
+{% endblock %}

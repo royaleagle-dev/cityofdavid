@@ -1,0 +1,66 @@
+{% extends "administrator/base.html" %}
+
+
+{% block title %}
+Web Admin
+{% endblock %}
+
+{% block CSS %}
+{% endblock %}
+
+{% block content %}
+<div class="panel-heading">
+	<h3 class="panel-title"><a href="javascript:void(0);" class="toggle-sidebar"><span class="fa fa-angle-double-left" data-toggle="offcanvas" title="Maximize Panel"></span></a>Dashboard</h3>
+</div>
+<div class="panel-body">
+	<div class="content-row">
+		<div class = "row">
+			<div class = "col-md-4">
+				<div class = "col-md-12" style = "height:100px;background-color:#5D9CEC">
+					<div align = "center" style = "color:white;">
+						<h5 style = "margin-bottom:0;">Photos</h5>
+						<h2 style = "margin-top:5px;">{{$photoCount}}</h2>
+					</div>		
+				</div>
+			</div>
+			<div class = "col-md-4">
+				<div class = "col-md-12 bg-danger" style = "height:100px;background-color:#3BAFDA">
+					<div align = "center" style = "color:white;">
+						<h5 style = "margin-bottom:0;">Events</h5>
+						<h2 style = "margin-top:5px;">{{$eventCount}}</h2>
+					</div>
+				</div>
+			</div>
+			<div class = "col-md-4">
+				<div class = "col-md-12 bg-danger" style = "height:100px;background-color:#4A89DC">
+					<div align = "center" style = "color:white;">
+						<h5 style = "margin-bottom:0;">Videos</h5>
+						<h2 style = "margin-top:5px;">{{$videoCount}}</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+  	</div>
+	<hr>
+	<div>
+		<h5>Information</h5>
+	</div>
+	<hr>
+	<div class = "row">
+		<div class = "col">
+
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block JS %}
+@php if(isset($_SESSION['msg']) && $_SESSION['msg'] == 'success'): @endphp
+<script>
+	$(document).ready(function(){
+		toastr.success("Authentication Successful");
+	})
+</script>
+@php unset($_SESSION['msg']) @endphp
+@php endif; @endphp
+{% endblock %}

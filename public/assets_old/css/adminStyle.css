@@ -1,0 +1,314 @@
+html{
+	box-sizing: border-box;
+	font-family: sans-serif;
+}
+
+*, *::before, *::after{
+	box-sizing: inherit;
+}
+
+*, *:before, *:after{
+	box-sizing:  inherit;
+}
+
+
+.top-navbar{
+	background-color: black;
+	padding: 5px;
+	color: white;
+}
+
+
+.top-navbar ul li{
+	display: inline-block;
+}
+
+.top-navbar ul{
+	list-style-type: none;
+	padding-inline-start: 0;
+}
+
+.form-panel{
+	padding: 5px;
+	border: 2px solid black;
+}
+
+.inputElement{
+	width: 100%;
+	padding: 7px;
+	margin-bottom: 3%;
+}
+
+#information{
+	list-style-type: none;
+
+}
+
+#information li{
+	margin-left: 0;
+	text-align: left;
+	margin-bottom: 3%;
+}
+
+.board{
+	width: 90%;
+	background-color: black;
+	height: 15vh;
+	color: white;
+}
+
+.rm-bullets{
+	list-style-type: none;
+	padding-left: 0;
+}
+
+.dash-item{
+	padding: 20px;
+	background-color: lightgrey;
+	color: black;
+	margin-bottom: 4%;
+	width: 90%;
+}
+
+.sub-dash-item{
+
+	padding: 10px;
+	background-color: black;
+	margin-bottom: 3%;
+	margin-top: 0;
+	width: 30%;
+	color: white;
+}
+
+.hover-pointer{
+	cursor: pointer;
+}
+
+
+.text-white{
+	color: white;
+}
+
+.text-black{
+	color: black;
+}
+
+.rm-underline{
+	text-decoration: none;
+}
+.dash-item:hover{
+	background-color: grey;
+	cursor: pointer;
+}
+
+.notification{
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	background-color: white;
+	box-shadow:  5px -3px 20px grey;
+}
+
+pl2pc{
+	padding-left: 2%;
+}
+
+/*utilities*/
+
+.grid-container{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+
+body{
+	margin: 0;
+	padding: 0;
+}
+
+.w10{
+	width: 10%;
+}
+
+.w20{
+	width: 20%;
+}
+
+.w30{
+	width: 30%;
+}
+
+.w40{
+	width: 40%;
+}
+
+.w50{
+	width: 50%;
+}
+
+.w60{
+	width: 60%;
+}
+
+@media (max-width: 500px){
+	.w40{
+		width: 80%;
+	}
+}
+
+.mr1{
+	margin-right: 10px;
+}
+
+.mr2{
+	margin-right: 20px;
+}
+
+.ml1{
+	margin-left: 10px;
+}
+
+.ml2{
+	margin-left: 20px;
+}
+.container{
+	margin: 0;
+	padding: 0;
+}
+
+.float-right{
+	float: right;
+}
+
+.float-left{
+	float: left;
+}
+
+.text-right{
+	text-align: right;
+}
+
+.text-left{
+	text-align: left;
+}
+
+.text-center{
+	text-align: center;
+}
+
+.mt15pc{
+	margin-top: 15%;
+}
+
+.mt10pc{
+	margin-top: 10%;
+}
+
+.mt5pc{
+	margin-top: 5%;
+}
+
+.btn{
+	padding: 2%;
+	border-radius: 7px;
+	outline: none;
+	border: none;
+	background-color: lightgrey;
+}
+
+.btn-dark{
+	background-color: black;
+	color: white;
+}
+
+.btn:hover{
+	background-color: black;
+	color: white;
+}
+
+.btn-dark:hover{
+	background-color: lightgrey;
+	color: black;
+}
+
+/*layouts*/
+.grid{
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+	padding: 10px;
+	grid-gap: 10px;
+}
+
+.col-12{
+	grid-column:  span 12;
+}
+
+.col-11{
+	grid-column: span 11;
+}
+
+.col-10{
+	grid-column: span 10;
+}
+
+.col-9{
+	grid-column: span 9;
+}
+
+.col-8{
+	grid-column: span 8;
+}
+
+.col-7{
+	grid-column: span 7;
+}
+
+.col-6{
+	grid-column:  span 6;
+}
+
+.col-5{
+	grid-column:  span 5;
+}
+
+.col-4{
+	grid-column:  span 4;
+}
+
+.col-3{
+	grid-column:  span 3;
+}
+
+.col-2{
+	grid-column:  span 2;
+}
+
+.col-1{
+	grid-column:  span 1;
+}
+
+
+
+/* specifics */
+
+input[type='submit']{
+	cursor: pointer;
+	outline: none;
+	border: none;
+}
+
+.bg-black{
+	background-color: black;
+	color: white;
+}
+
+@media (max-width: 500px){
+	.grid{
+		display: block;
+	}
+}
+
+@media(min-width: 500px) and (max-width: 650px){
+	.grid{
+		display: block;
+	}
+}

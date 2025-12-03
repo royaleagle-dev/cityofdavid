@@ -1,0 +1,64 @@
+{% extends "administrator/base.html" %}
+
+{% block title %}
+View Photos
+{% endblock %}
+
+{% block otherCSS %}
+
+{% endblock %}
+
+{% block content %}
+
+<style>
+.col-4{
+	background-color: lightgrey;
+	height: 200px;
+}
+</style>
+<div class = "grid">
+	<div class = "col-10">
+		<div class = "grid">
+			
+			@php foreach($sermons as $sermon): @endphp
+			<div class = "col-4" style = "background-image:url('');background-size:cover;" id = "eventContainer-{{$photo->id}}">
+				<div style = "background-color:black;padding:2%;width:100%;position:relative;top:85%;">
+					<div>
+						<h4 class = "text-white">{{$sermon->title}}</h4>
+						<hr>
+						<small class = "text-white" style = "display:inline;">{{$sermon->sermonDate}}</small>
+						<div style = "display:inline;float:right;">
+							<a href = "{% url deleteEvent %}/{{$event->id}}" class = "rm-underline text-white">Delete</a>
+							<a href = "{% url editEvent %}" class = "rm-underline text-white">Edit</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			@php endforeach; @endphp
+
+		</div>
+	</div>
+	<div class = "col-2" style = "padding:2%;">
+		<ul class = "rm-bullets">
+			<li style = "" class = "dash-item bg-black" onclick = "confirmDeleteAll()">Delete All</li>
+		</ul>
+		<hr style = "width:90%;" align="left">
+		<ul class = "rm-bullets">
+			<li class = "dash-item" style = ""><a href = "{% url dashboard %}" class = "text-black rm-underline">Admin Panel</a></li>
+			<li class = "dash-item"><a href="{% url addSermon %}" class = "text-black rm-underline">Add Sermon</a></li>
+		</ul>
+
+	</div>
+</div>
+{% endblock %}
+
+{% block otherJS %}
+<script>
+	function confirmDeleteAll(id){
+		confirmDelete = confirm("Do you really want to delete all Events?");
+		if(confirmDelete){
+			window.location = `{% url deleteAllEvents %}`
+		}
+	}
+</script>
+{% endblock %}

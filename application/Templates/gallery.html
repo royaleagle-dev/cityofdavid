@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block otherCSS %}
+<link rel = 'stylesheet' href = "{{URL_ROOT}}assets/vendor/fotorama/fotorama.css">
+<style>
+#photoContainer{
+	width: 600px;
+	height: auto;
+}
+
+@media (max-width: 400px){
+	#photoContainer{
+		width: auto;
+		height: 200px;
+	}
+}
+
+@media (max-width: 500px){
+	#photoContainer{
+		max-width: 100%;
+		height: auto;
+	}
+}
+</style>
+{% endblock %}
+
+{% block title %}
+Photo Gallery
+{% endblock %}
+
+{% block content %}
+<div style = "margin-top:50px;margin-bottom:20px;">
+	<div class = "row">
+		<div class = "offset-md-3 col-md-4">
+			<div class="fotorama" data-nav="thumbs" id = "photoContainer" data-allowfullscreen="true">
+  				@php foreach($photos as $photo): @endphp
+  					<img src="{{$photo->photo_path}}">
+  				@php endforeach; @endphp
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block otherJS %}
+<script src = "{{URL_ROOT}}assets/vendor/fotorama/fotorama.js"></script>
+{% endblock %}
