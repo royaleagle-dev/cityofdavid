@@ -2,6 +2,8 @@
 
 class Index extends Controller {
 
+    private $contactModel;
+
     public function __construct(){
         $this->contactModel = $this->loadModel('ContactModel');
     }

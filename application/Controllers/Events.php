@@ -1,6 +1,9 @@
 <?php
 
 class Events extends Controller{
+	
+	private $eventModel;
+
 	public function __construct(){
 		$this->eventModel = $this->loadModel('Event');
 	}

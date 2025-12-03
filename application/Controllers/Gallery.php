@@ -1,6 +1,9 @@
 <?php
 
 class Gallery extends Controller{
+	
+	private $photoModel;
+
 	public function __construct(){
 		$this->photoModel = $this->loadModel('PhotoModel');
 	}

@@ -1,6 +1,10 @@
 <?php
 
 class ContactModel{
+    
+    $private $db;
+    $private $tbl;
+
     public function __construct(){
         $this->db = new Database();
         $this->tbl = 'contact_messages';

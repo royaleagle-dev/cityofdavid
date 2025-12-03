@@ -1,6 +1,9 @@
 <?php
 
 class Subscriber extends Controller{
+    
+    private $subscriberModel;
+
     public function __construct(){
         $this->subscriberModel = $this->loadModel('SubscriberModel');
     }
