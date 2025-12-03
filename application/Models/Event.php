@@ -2,8 +2,8 @@
 
 class Event{
 	
-	$private $db;
-    $private $tbl;
+	private $db;
+    private $tbl;
 
 	public function __construct(){
 		$this->db = new Database();
